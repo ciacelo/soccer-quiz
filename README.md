@@ -21,9 +21,17 @@ Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_mediu
 Execute to the example:
 
 ```bash
-development: npm run dev
-build: npm run build
-production: npm run start
+# install dependencies
+npm install
+
+# serve with hot reload at localhost:3000
+npm run dev
+
+# build for production with minification
+npm run build
+
+# production 
+npm run start
 ```
 
 Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
