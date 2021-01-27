@@ -1,0 +1,45 @@
+{
+  "bg": "https://images.unsplash.com/photo-1590701705198-ec5fe217281e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1617&q=80",
+  "title": "Quiz Mundo do Futebol",
+  "description": "Teste os seus conhecimentos sobre os jogadores de futebol e vamos ver o quanto você sabe sobre o futebol",
+  "questions": [
+    {
+      "image": "https://media.giphy.com/media/xUOxf3yDKCuwpOlT3i/giphy.gif",
+      "title": "Em qual dessas equipes o sueco Ibrahimovic NÃO jogou?",
+      "description": "Essa é pra aquecer",
+      "answer": 0,
+      "alternatives": [
+        "Napoli",
+        "Juventus",
+        "Inter de Milão",
+        "Milan"
+      ]
+    },
+    {
+      "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
+      "title": "Qual dessas equipes o atacante Diego Costa não jogou?",
+      "description": "Quero ver se você conhece o Diego Costa mesmo, haha",
+      "answer": 0,
+      "alternatives": [
+         "Valência",
+         "Celta de Vigo",
+         "Chelsea",
+         "Rayo Vallecano"
+      ]
+    }
+  ],
+  "external": [
+    ""
+  ],
+  "theme": {
+    "colors": {
+      "primary": "#673ab7",
+      "secondary": "#ff1744",
+      "mainBg": "#171B35",
+      "contrastText": "#FFFFFF",
+      "wrong": "#FF5722",
+      "success": "#4CAF50"
+    },
+    "borderRadius": "4px"
+  }
+}
