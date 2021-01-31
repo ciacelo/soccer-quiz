@@ -1,5 +1,5 @@
 # Soccer Quiz
-### jogo de perguntas e respotas, sobre o mundo do futebol.
+### jogo de perguntas e respostas, sobre o mundo do futebol.
 
 Este app tem por objetivo o estudo de tecnologias modernas, arquiteturas de software e padrões de projetos, aplicados ao Front End.
 Seguindo alguns princípios como Design Patterns e o uso de TDD. O projeto aborda os seguintes aspectos:
