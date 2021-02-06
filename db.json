@@ -29,7 +29,7 @@
     }
   ],
   "external": [
-    ""
+    "https://soccer-quiz.marcelomartins.vercel.app/"
   ],
   "theme": {
     "colors": {
@@ -40,7 +40,6 @@
       "wrong": "#FF5722",
       "success": "#4CAF50"
     },
-    "borderRadius": "4px",
-    "font": "<link rel='preconnect' href='https://fonts.gstatic.com'> <link href='https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;900&display=swap' rel='stylesheet'>"
+    "borderRadius": "4px"
   }
 }
