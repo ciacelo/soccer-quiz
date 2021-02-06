@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 import db from '../db.json';
 import Footer from '../src/components/Footer';
 import GitHubCorner from '../src/components/GitHubCorner';
@@ -6,8 +7,21 @@ import QuizBackground from '../src/components/QuizBackGround';
 import QuizContainer from '../src/components/QuizContainer';
 import Widget from '../src/components/Widget';
 import QuizLogo from '../src/components/QuizLogo';
+import Input from '../src/components/Input';
+import Button from '../src/components/Button';
 
 export default function Home() {
+  const router = useRouter();
+  const [name, setName] = useState('');
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setName(event.target.name);
+    router.push(`/quiz?name=${name}`);
+    // eslint-disable-next-line no-console
+    console.log('requisição React: ');
+  };
+
   return (
     <QuizBackground backgroundImage={db.bg}>
       <QuizContainer>
@@ -17,7 +31,27 @@ export default function Home() {
             <h1>The legend of Messi</h1>
           </Widget.Header>
           <Widget.Content>
-            <h1>O que você conhece sobre futebol?</h1>
+            <form onSubmit={(event) => handleSubmit(event)}>
+              {/* <input
+                placeholder="Digite seu nome"
+                name="name"
+                onChange={(e) => setName(e.target.value)}
+              /> */}
+              <Input
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Digite seu nome"
+                name="name"
+                value={name}
+              />
+              {/* <button type="submit" disabled={name.length === 0}>
+                Jogar
+              </button> */}
+              <Button
+                type="submit"
+              >
+                Jogar
+              </Button>
+            </form>
           </Widget.Content>
 
         </Widget>
