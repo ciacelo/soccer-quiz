@@ -13,7 +13,7 @@ const InputBase = styled.input`
   outline: 0;
   margin-bottom: 25px;
   ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: ${({ theme }) => theme.colors.contrastText}DD;
+    color: ${({ theme }) => theme.colors.contrastText};
     opacity: 1; /* Firefox */
   }
 `;
