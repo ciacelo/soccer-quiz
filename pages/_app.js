@@ -39,6 +39,7 @@ export default function App({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;900&display=swap" rel="stylesheet" />
+        <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon" />
       </Head>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
