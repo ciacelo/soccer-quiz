@@ -41,13 +41,14 @@ export default function Home() {
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Digite seu nome"
                 name="name"
-                value={name}
+                value={`${name}`}
               />
               {/* <button type="submit" disabled={name.length === 0}>
                 Jogar
               </button> */}
               <Button
                 type="submit"
+                disabled={name.length === 0}
               >
                 Jogar
               </Button>
