@@ -6,16 +6,16 @@ import Widget from '../../Widget';
 import Button from '../../Button';
 
 // eslint-disable-next-line arrow-body-style
-const QuestionWidget = ({ questions }) => {
+const QuestionWidget = ({ question, totalQuestions, questionIndex }) => {
   return (
     <Widget>
       <Widget.Header>
         <h3>
-          {`Pergunta n°1 de ${questions.length}`}
+          {`Pergunta ${questionIndex + 1} de ${totalQuestions}`}
         </h3>
       </Widget.Header>
       <img
-        src={questions[0].image}
+        src={question.image}
         alt="ilustração"
         style={{
           width: '100%',
@@ -25,10 +25,10 @@ const QuestionWidget = ({ questions }) => {
       />
       <Widget.Content>
         <h2>
-          {questions[0].title}
+          {question.title}
         </h2>
         <p>
-          {questions[0].description}
+          {question.description}
         </p>
 
         <Button>
@@ -41,11 +41,13 @@ const QuestionWidget = ({ questions }) => {
 };
 
 QuestionWidget.defaultProps = {
-  questions: [],
+  question: {},
 };
 
 QuestionWidget.propTypes = {
-  questions: PropTypes.arrayOf,
+  question: PropTypes.objectOf,
+  totalQuestions: PropTypes.number.isRequired,
+  questionIndex: PropTypes.number.isRequired,
 };
 
 export default QuestionWidget;
