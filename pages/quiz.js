@@ -13,13 +13,18 @@ import QuestionWidget from '../src/components/QuizPage/QuestionWidget';
 const QuizPage = () => {
   const [x, setX] = useState('');
   const { questions } = db;
+  const totalQuestions = questions.length;
+  const questionIndex = 0;
+  const question = questions[questionIndex];
 
   return (
     <QuizBackground backgroundImage={db.bg}>
       <QuizContainer>
         <QuizLogo />
         <QuestionWidget
-          questions={questions}
+          question={question}
+          questionIndex={questionIndex}
+          totalQuestions={totalQuestions}
         />
         <Widget>
           <Widget.Content>
