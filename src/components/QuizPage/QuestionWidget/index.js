@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import PropTypes from 'prop-types';
 // import db from '../../../../db.json';
@@ -6,7 +6,18 @@ import Widget from '../../Widget';
 import Button from '../../Button';
 
 // eslint-disable-next-line arrow-body-style
-const QuestionWidget = ({ question, totalQuestions, questionIndex }) => {
+const QuestionWidget = ({
+  question, totalQuestions, questionIndex, onSubmit,
+}) => {
+  const questionID = `question__${questionIndex}`;
+  const [selectedAlternative, setSelectedAlternative] = useState(null);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(selectedAlternative);
+    onSubmit();
+  };
+
   return (
     <Widget>
       <Widget.Header>
@@ -30,10 +41,32 @@ const QuestionWidget = ({ question, totalQuestions, questionIndex }) => {
         <p>
           {question.description}
         </p>
+        <form onSubmit={(e) => handleSubmit(e)}>
+          {question.alternatives.map((alternative, alternativeIndex) => {
+            const alternativeID = `alternative__${alternativeIndex}`;
+            return (
+              <Widget.Topic
+                as="label"
+                htmlFor={alternativeID}
+                key={alternativeID}
+              >
+                <input
+                  type="radio"
+                  // style={{ display: 'none' }}
+                  id={alternativeID}
+                  name={questionID}
+                  value={alternative}
+                  onChange={(e) => setSelectedAlternative(e.target.value)}
+                />
+                {alternative}
+              </Widget.Topic>
+            );
+          })}
 
-        <Button>
-          Confirmar
-        </Button>
+          <Button type="submit">
+            Confirmar
+          </Button>
+        </form>
       </Widget.Content>
 
     </Widget>
@@ -45,7 +78,7 @@ QuestionWidget.defaultProps = {
 };
 
 QuestionWidget.propTypes = {
-  question: PropTypes.objectOf,
+  question: PropTypes.objectOf(Object),
   totalQuestions: PropTypes.number.isRequired,
   questionIndex: PropTypes.number.isRequired,
 };
