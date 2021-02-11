@@ -4,7 +4,7 @@
   "description": "Teste os seus conhecimentos sobre os jogadores de futebol e vamos ver o quanto você sabe sobre o futebol",
   "questions": [
     {
-      "image": "https://media.giphy.com/media/xUOxf3yDKCuwpOlT3i/giphy.gif",
+      "image": "https://firebasestorage.googleapis.com/v0/b/next-commics.appspot.com/o/soccer-quiz%2Fibrahimovic.jpg?alt=media&token=81588bcd-32d9-46d3-b2c3-24762bc860be",
       "title": "Em qual dessas equipes o sueco Ibrahimovic NÃO jogou?",
       "description": "Essa é pra aquecer",
       "answer": 0,
@@ -16,7 +16,7 @@
       ]
     },
     {
-      "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
+      "image": "https://firebasestorage.googleapis.com/v0/b/next-commics.appspot.com/o/soccer-quiz%2Fdiego-costa.jpg?alt=media&token=021bffcc-1549-4a1d-bb66-f8c543685097",
       "title": "Qual dessas equipes o atacante Diego Costa não jogou?",
       "description": "Quero ver se você conhece o Diego Costa mesmo, haha",
       "answer": 0,
