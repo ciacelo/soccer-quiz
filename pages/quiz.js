@@ -1,37 +1,55 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import db from '../db.json';
-import Widget from '../src/components/Widget';
 import QuizBackground from '../src/components/QuizBackGround';
 import QuizContainer from '../src/components/QuizContainer';
 import GitHubCorner from '../src/components/GitHubCorner';
 // import Input from '../src/components/Input';
 import QuizLogo from '../src/components/QuizLogo';
-import Footer from '../src/components/Footer';
 import QuestionWidget from '../src/components/QuizPage/QuestionWidget';
+import LoadingWidget from '../src/components/QuizPage/LoadingWidget';
+
+const screenStates = { LOADING: 'LOADING', QUIZ: 'QUIZ', RESULT: 'RESULT' };
 
 const QuizPage = () => {
-  const [x, setX] = useState('');
+  const [screenState, setScreenState] = useState(screenStates.LOADING);
   const { questions } = db;
   const totalQuestions = questions.length;
-  const questionIndex = 0;
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const questionIndex = currentQuestion;
   const question = questions[questionIndex];
+
+  useEffect(() => {
+    setTimeout(() => {
+      setScreenState(screenStates.QUIZ);
+    }, 1 * 1000);
+  }, []);
+
+  const handleSubmit = () => {
+    const nextQuestion = questionIndex + 1;
+    if (nextQuestion < totalQuestions) {
+      setCurrentQuestion(questionIndex + 1);
+    } else {
+      setScreenState(screenStates.RESULT);
+    }
+  };
 
   return (
     <QuizBackground backgroundImage={db.bg}>
       <QuizContainer>
         <QuizLogo />
-        <QuestionWidget
-          question={question}
-          questionIndex={questionIndex}
-          totalQuestions={totalQuestions}
-        />
-        <Widget>
-          <Widget.Content>
-            <h1>Quiz da Galera:</h1>
-          </Widget.Content>
-        </Widget>
-        <Footer />
+        {screenState === screenStates.QUIZ && (
+          <QuestionWidget
+            question={question}
+            questionIndex={questionIndex}
+            totalQuestions={totalQuestions}
+            onSubmit={handleSubmit}
+          />
+        )}
+        {screenState === screenStates.LOADING
+          && <LoadingWidget />}
+        {screenState === screenStates.RESULT
+          && <h1>você acertou: X de XX</h1>}
         <GitHubCorner projectUrl="https://github.com/ciacelo/soccer-quiz" />
       </QuizContainer>
     </QuizBackground>
