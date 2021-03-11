@@ -6,16 +6,32 @@ import Widget from '../../Widget';
 import Button from '../../Button';
 
 // eslint-disable-next-line arrow-body-style
+const SCREEN_STATE = {
+  error: 'error',
+  right: 'right',
+  loading: 'loading',
+};
+
 const QuestionWidget = ({
   question, totalQuestions, questionIndex, onSubmit,
 }) => {
   const questionID = `question__${questionIndex}`;
   const [selectedAlternative, setSelectedAlternative] = useState(null);
+  const [statusAnswer, setStatusAnswer] = useState(SCREEN_STATE.loading);
+  // const [isQuestionSubmited, setIsQuestionSubmited] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(selectedAlternative);
-    onSubmit();
+    if (selectedAlternative === question.answer) {
+      setStatusAnswer(SCREEN_STATE.right);
+    } else {
+      setStatusAnswer(SCREEN_STATE.error);
+    }
+    setTimeout(() => {
+      onSubmit();
+    }, 3000);
+    // onSubmit();
   };
 
   return (
@@ -66,6 +82,9 @@ const QuestionWidget = ({
           <Button type="submit">
             Confirmar
           </Button>
+
+          {SCREEN_STATE.error === statusAnswer && <p>Você acertou!</p>}
+          {SCREEN_STATE.right === statusAnswer && <p>Você errou!</p>}
         </form>
       </Widget.Content>
 
