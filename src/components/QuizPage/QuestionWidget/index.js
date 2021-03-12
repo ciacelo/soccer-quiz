@@ -13,23 +13,33 @@ const SCREEN_STATE = {
 };
 
 const QuestionWidget = ({
-  question, totalQuestions, questionIndex, onSubmit,
+  question, totalQuestions, questionIndex, onSubmit, addResult,
 }) => {
   const questionID = `question__${questionIndex}`;
   const [selectedAlternative, setSelectedAlternative] = useState(null);
   const [statusAnswer, setStatusAnswer] = useState(SCREEN_STATE.loading);
+  const result = selectedAlternative === question.answer;
   // const [isQuestionSubmited, setIsQuestionSubmited] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(selectedAlternative);
-    if (selectedAlternative === question.answer) {
-      setStatusAnswer(SCREEN_STATE.right);
-    } else {
-      setStatusAnswer(SCREEN_STATE.error);
+    console.log(selectedAlternative, question.answer, question);
+
+    function resultAlternative() {
+      if (selectedAlternative === question.answer) {
+        setStatusAnswer(SCREEN_STATE.right);
+      } else {
+        setStatusAnswer(SCREEN_STATE.error);
+      }
     }
+    resultAlternative();
+
     setTimeout(() => {
       onSubmit();
+      console.log(result);
+      addResult(result);
+      setStatusAnswer(SCREEN_STATE.loading);
+      setSelectedAlternative(null);
     }, 3000);
     // onSubmit();
   };
@@ -72,19 +82,19 @@ const QuestionWidget = ({
                   id={alternativeID}
                   name={questionID}
                   value={alternative}
-                  onChange={(e) => setSelectedAlternative(e.target.value)}
+                  onChange={() => setSelectedAlternative(alternativeIndex)}
                 />
                 {alternative}
               </Widget.Topic>
             );
           })}
 
-          <Button type="submit">
+          <Button type="submit" disabled={selectedAlternative !== 0 && !selectedAlternative}>
             Confirmar
           </Button>
 
-          {SCREEN_STATE.error === statusAnswer && <p>Você acertou!</p>}
-          {SCREEN_STATE.right === statusAnswer && <p>Você errou!</p>}
+          {SCREEN_STATE.right === statusAnswer && <p>Você acertou!</p>}
+          {SCREEN_STATE.error === statusAnswer && <p>Você errou!</p>}
         </form>
       </Widget.Content>
 

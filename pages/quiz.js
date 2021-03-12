@@ -18,6 +18,7 @@ const QuizPage = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const questionIndex = currentQuestion;
   const question = questions[questionIndex];
+  const [result, setResult] = useState([]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -27,6 +28,9 @@ const QuizPage = () => {
 
   const handleSubmit = () => {
     const nextQuestion = questionIndex + 1;
+    // console.log('RESULT: ', resultCurrent);
+    // setResult([...result, resultCurrent]);
+    // console.log(resultCurrent);
     if (nextQuestion < totalQuestions) {
       setCurrentQuestion(questionIndex + 1);
     } else {
@@ -44,12 +48,23 @@ const QuizPage = () => {
             questionIndex={questionIndex}
             totalQuestions={totalQuestions}
             onSubmit={handleSubmit}
+            addResult={(res) => setResult([...result, res])}
           />
         )}
         {screenState === screenStates.LOADING
           && <LoadingWidget />}
         {screenState === screenStates.RESULT
-          && <h1>você acertou: X de XX</h1>}
+          && (
+          <h1>
+            você acertou:
+            {' '}
+            {result.filter((x) => x).length}
+            {' '}
+            de
+            {' '}
+            {totalQuestions}
+          </h1>
+          )}
         <GitHubCorner projectUrl="https://github.com/ciacelo/soccer-quiz" />
       </QuizContainer>
     </QuizBackground>
