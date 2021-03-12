@@ -4,8 +4,7 @@
 Este app tem por objetivo o estudo de tecnologias modernas, arquiteturas de software e padrões de projetos, aplicados ao Front End.
 Seguindo alguns princípios como Design Patterns e o uso de TDD. O projeto aborda os seguintes aspectos:
 - Styled Components
-- Modularização
-- DDD
+- Next.js
 - Hooks
 - Lottie
 - FramerMotion
